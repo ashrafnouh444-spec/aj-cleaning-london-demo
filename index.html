@@ -387,6 +387,39 @@
       formStatus.classList.add('show');
     });
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+  // Temporary 3-minute demo test
+  const demoKey = 'ajCleaningDemoStart';
+  const demoDuration = 3 * 60 * 1000;
+  let demoStart = localStorage.getItem(demoKey);
+
+  if (!demoStart) {
+    demoStart = Date.now();
+    localStorage.setItem(demoKey, demoStart);
+  }
+
+  if (Date.now() - Number(demoStart) >= demoDuration) {
+    document.body.innerHTML = `
+      <div style="
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:24px;
+        box-sizing:border-box;
+        background:#123f35;
+        color:white;
+        font-family:Arial,sans-serif;
+      ">
+        <h1>AJ Cleaning London</h1>
+        <h2>Demo Preview Ended</h2>
+        <p>Your 3-minute preview has ended.</p>
+      </div>
+    `;
+  }
+
   </script>
 </body>
 </html>
